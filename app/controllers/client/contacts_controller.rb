@@ -35,4 +35,22 @@ class Client::ContactsController < ApplicationController
     @contact = response.body
     render "edit.html.erb"
   end
+
+  def update
+    client_params = {
+                    first_name: params[:first_name],
+                    last_name: params[:last_name],
+                    email: params[:email]
+                    }
+    response = Unirest.patch(
+                            "http://localhost:3000/api/contacts/#{ params [:id] }", parameters:client_params
+                            )
+    render 'update.html.erb'
+  end
+
+  def destroy
+    contact_id = params[:id]
+    response = Unirest.delete("http://localhost:3000/api/contacts/#{ contact_id }")
+    render "destroy.html.erb"  
+  end
 end
