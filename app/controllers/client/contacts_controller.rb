@@ -12,8 +12,10 @@ class Client::ContactsController < ApplicationController
   def create
     client_params = {
                     first_name: params[:first_name],
+                    middle_name: params[:middle_name],
                     last_name: params[:last_name],
                     email: params[:email]
+                    bio: params[:bio]
                     }
     response = Unirest.post(
                           "http://localhost:3000/api/contacts",
@@ -39,8 +41,10 @@ class Client::ContactsController < ApplicationController
   def update
     client_params = {
                     first_name: params[:first_name],
+                    middle_name: params[:middle_name],
                     last_name: params[:last_name],
                     email: params[:email]
+                    bio: params[:bio]
                     }
     response = Unirest.patch(
                             "http://localhost:3000/api/contacts/#{ params [:id] }", parameters:client_params
