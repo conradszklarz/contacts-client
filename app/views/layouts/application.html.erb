@@ -10,7 +10,17 @@
 
   <body>
     <a href="/">Home</a>
-    <a href="/client/contacts/new">New Contact</a>
+    <a href="/client/contacts/new">
+    New Contact</a>
+    <a href="/signup">Sign Up</a>
+
+    <a href="/login">Log In</a>
+    <a href="/logout" data-method="delete">Log Out</a>
+
+    <% if @jwt %>
+     <h6><%= @jwt %></h6>
+     <% end %>
+
     <%= yield %>
   </body>
 </html>
